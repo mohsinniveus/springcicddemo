@@ -1,11 +1,18 @@
-node {
-  
+pipeline {
+    agent any 
+
     stages {
-        stage('build&push') {
+        stage('Build Assets') {
+            agent any 
             steps {
-                sh "docker build -t atmohsin/springcicddemo ."
+                echo 'Building Assets...'
+            }
+        }
+        stage('Test') {
+            agent any
+            steps {
+                echo 'Testing stuff...'
             }
         }
     }
-
-} 
+}
