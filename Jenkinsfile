@@ -1,20 +1,8 @@
 node {
-
-    withMaven(maven:'maven') {
-
-        stage('Checkout') {
-            git url: 'https://github.com/mohsinniveus/springcicddemo.git', credentialsId: 'github', branch: 'main'
-        }
-
-        stage('Build') {
-            sh 'mvn clean install'
-
-            def pom = readMavenPom file:'pom.xml'
-            print pom.version
-            env.version = pom.version
-        }
-     
-
-    }
+    
+    stage('Clone Repo') { // for display purposes
+      // Get some code from a GitHub repository
+      git 'https://github.com/mohsinniveus/springcicddemo.git'
+    } 
 
 } 
