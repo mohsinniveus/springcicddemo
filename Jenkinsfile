@@ -1,5 +1,5 @@
 node {
-    agent { 'master' }
+  
     stages {
         stage('build&push') {
             steps {
