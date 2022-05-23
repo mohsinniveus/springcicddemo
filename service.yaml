@@ -5,7 +5,7 @@ metadata:
 spec:
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 9090
   selector:
     app: springcicddemo
   type: LoadBalancer
