@@ -25,11 +25,4 @@ spec:
         name: springcicddemo
         ports:
         - containerPort: 9090
-          protocol: TCP
-        livenessProbe:
-          httpGet:
-            scheme: HTTP
-            path: /
-            port: 9090
-          initialDelaySeconds: 30
-          timeoutSeconds: 30  
+          protocol: TCP 
