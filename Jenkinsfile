@@ -1,23 +1,17 @@
 pipeline {
-    agent any
-    tools { 
-        maven 'mvn' 
-        jdk 'jdk16' 
+    agent {
+        node {
+            label 'testing'
+        }
     }
-    stages {
-        stage ('Initialize') {
-            steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                ''' 
-            }
+    
+    stage("Pushing Image to GCR") {
+      steps {
+        script {
+          withDockerRegistry([credentialsId: "gcr:tech-rnd-project", url: "https://gcr.io"]) {
+            sh "docker push gcr.io/tech-rnd-project/springcicddemo:1.0.0"
+          }
         }
-
-        stage ('Build') {
-            steps {
-               sh 'mvn -Dmaven.test.failure.ignore=true install'
-            }
-        }
+      }
     }
 }
