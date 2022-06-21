@@ -16,7 +16,7 @@ public class TestController {
     return "Version 1.0";
   }
   
-  /*@GetMapping("/version2")
+  @GetMapping("/version2")
   public String getVersion2() {
     return "Version 2.0";
   }
@@ -24,6 +24,6 @@ public class TestController {
   @GetMapping("/version3")
   public String getVersion3() {
     return "Version 3.0";
-  }*/
+  }
   
 }
