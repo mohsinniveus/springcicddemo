@@ -2,13 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: springcicddemo
-  name:  springcicddemo
+    app: canaryspringcicddemo
+  name: canaryspringcicddemo
 spec:
   ports:
-  - port: 9090
+  - port: 7070
     targetPort: 9090
   type: NodePort  
   selector:
-    app: springcicddemo
+    app:  canaryspringcicddemo
   

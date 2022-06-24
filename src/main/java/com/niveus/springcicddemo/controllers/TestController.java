@@ -26,4 +26,14 @@ public class TestController {
     return "Version 3.0";
   }
   
+  @GetMapping("/version4")
+  public String getVersion4() {
+    return "Version 4.0";
+  }
+  
+  @GetMapping("/version5")
+  public String getVersion5() {
+    return "Version 5.0 - This is Canary deployment";
+  }
+  
 }

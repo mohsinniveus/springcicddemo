@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: springcicddemo
+  name:  canaryspringcicddemo
 spec:
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: springcicddemo
+      app:  canaryspringcicddemo
   template:
     metadata:
       labels:
-        app: springcicddemo
+        app:  canaryspringcicddemo
     spec:
       containers:
-      - image: gcr.io/tech-rnd-project/springcicddemo:1.0.0
+      - image: gcr.io/tech-rnd-project/springcicddemo:5.0.0
         resources:
           requests:
             memory: "512Mi"
@@ -22,7 +22,7 @@ spec:
           limits:
             memory: "512Mi"
             cpu: "500m"
-        name: springcicddemo
+        name:  canaryspringcicddemo
         ports:
         - containerPort: 9090
           protocol: TCP 
