@@ -27,12 +27,17 @@ public class TestControllerTests {
 	private MockMvc mockMvc;
 	 
 	@Test
-    public void testGetBirthdayDOW() throws Exception {
-		testVersion("Version 1.0");
+    public void testGetVersion1() throws Exception {
+		testVersion1("Version 1.0");
+    }
+	
+	
+    public void testGetVersion2() throws Exception {
+		testVersion2("Version 2.0");
     }
 	 
 	 
-	 private void testVersion(String resultOutput) throws Exception {
+	 private void testVersion1(String resultOutput) throws Exception {
 	        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/api/test/version1")
 	                .with(user(TEST_USER_ID))
 	                .with(csrf())
@@ -47,5 +52,19 @@ public class TestControllerTests {
 	        assertEquals(resultOutput, resultOutput);
 	    }
 	 
+	 private void testVersion2(String resultOutput) throws Exception {
+	        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/api/test/version2")
+	                .with(user(TEST_USER_ID))
+	                .with(csrf())
+	                .contentType(MediaType.APPLICATION_JSON)
+	                .accept(MediaType.APPLICATION_JSON))
+	                .andExpect(status().isOk())
+	                .andReturn();
+
+	        String resultTestVersion = result.getResponse().getContentAsString();
+	        System.out.println(resultTestVersion);
+	        assertNotNull(resultTestVersion);
+	        assertEquals(resultOutput, resultOutput);
+	    }
 
 }
