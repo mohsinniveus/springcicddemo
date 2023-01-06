@@ -1,0 +1,13 @@
+steps:
+- id: build
+  name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}', '.' ]
+- id: scan
+  name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  entrypoint: gcloud
+  args:
+  - -c
+  - |
+    gcloud artifacts docker images scan asia-south1-docker.pkg.dev/tech-rnd-project/cloudbuilddemo/springcicddemo:latest --format='value(response.scan)' > /workspace/scan_id.txt  
+images:
+- '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}'

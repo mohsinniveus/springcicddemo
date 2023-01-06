@@ -1,0 +1,9 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: deploy-qs-prod
+spec:
+  template:
+    spec:
+      containers:
+      - image: gcr.io/tech-rnd-project/springcicddemo:1.0.0
