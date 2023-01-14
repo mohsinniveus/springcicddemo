@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: springcicddemo-v2
+  labels:
+    account: springcicddemo-v2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springcicddemo-v2
+  labels:
+    app: springcicddemo
+    version: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springcicddemo
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: springcicddemo
+        version: v2
+    spec:
+      serviceAccountName: springcicddemo-v2
+      containers:
+      - name: springcicddemo
+        image: gcr.io/tech-rnd-project/springcicddemo-v2:2.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9090
+        securityContext:
+          runAsUser: 1000
+---

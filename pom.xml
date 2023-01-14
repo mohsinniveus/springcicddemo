@@ -20,6 +20,7 @@
 		<junit.jupiter.version>5.7.0</junit.jupiter.version>
     	<maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
  		<maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+ 		<start-class>com.niveus.springcicddemo.SpringcicddemoApplication</start-class>
 	</properties>
 	
 	<dependencies>
@@ -52,6 +53,21 @@
 	<build>
 		<pluginManagement>
 		            <plugins>
+		            	<plugin>
+        					<groupId>org.springframework.boot</groupId>
+        					<artifactId>spring-boot-maven-plugin</artifactId>
+        					<configuration>
+            					<mainClass>com.niveus.springcicddemo.SpringcicddemoApplication</mainClass>
+            					<layout>JAR</layout>
+        					</configuration>
+        					<executions>
+			                    <execution>
+			                        <goals>
+			                            <goal>repackage</goal>
+			                        </goals>
+			                    </execution>
+			                </executions>
+    					</plugin>
 		                <plugin>
 		                    <groupId>org.apache.maven.plugins</groupId>
 		                    <artifactId>maven-compiler-plugin</artifactId>

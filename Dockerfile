@@ -1,9 +1,5 @@
-FROM maven:3.5-jdk-8 AS build  
-COPY src /usr/src/app/src  
-COPY pom.xml /usr/src/app  
-RUN mvn -f /usr/src/app/pom.xml clean package -Dmaven.test.skip
-
-FROM gcr.io/distroless/java  
-COPY --from=build /usr/src/app/target/springcicddemo-0.0.1-SNAPSHOT.jar /usr/app/springcicddemo-0.0.1-SNAPSHOT.jar 
-EXPOSE 8080  
-ENTRYPOINT ["java","-jar","/usr/app/springcicddemo-0.0.1-SNAPSHOT.jar"] 
+FROM eclipse-temurin:17-jdk-alpine
+VOLUME /tmp
+ARG JAR_FILE
+COPY target/springcicddemo-0.0.1-SNAPSHOT.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]

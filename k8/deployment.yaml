@@ -17,4 +17,4 @@ spec:
       - image: gcr.io/tech-rnd-project/springcicddemo:1.0.0
         name: springcicddemo
         ports:
-        - containerPort: 80
+        - containerPort: 9090

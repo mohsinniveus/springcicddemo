@@ -22,17 +22,17 @@ public class TestController {
 
 	@GetMapping("/version")
 	public String getVersion() {
-		return "Version 1.0";
+		return "ISTIO - Version 1.0";
 	}
 
 	@GetMapping("/version2")
 	public String getVersion2() {
-		return "Version 2.0";
+		return "ISTIO - Version 2.0";
 	}
 
 	@GetMapping("/version3")
 	public String getVersion3() {
-		return "Version 3.0";
+		return "ISTIO - Version 3.0";
 	}
 
 }
