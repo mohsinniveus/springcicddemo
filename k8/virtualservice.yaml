@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   hosts:
-  - "springcicddemo.default.svc.cluster.local"
+  - "*"
   gateways:
   - niveus-gateway
   http:
@@ -28,10 +28,10 @@ spec:
         port:
           number: 9090
         subset: v1  
-      weight: 90
+      weight: 100
     - destination:
         host: springcicddemo.default.svc.cluster.local
         port:
           number: 9090
         subset: v2  
-      weight: 10
+      weight: 0
