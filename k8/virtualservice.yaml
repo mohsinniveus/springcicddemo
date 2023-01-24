@@ -5,9 +5,9 @@ metadata:
   namespace: default
 spec:
   hosts:
-  - "*"
+  - "backend.ns.com"
   gateways:
-  - niveus-gateway
+  - backend-gateway
   http:
   - match:
     - headers:

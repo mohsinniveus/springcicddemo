@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: niveus-gateway
+  name: backend-gateway
 spec:
   selector:
     istio: ingressgateway # use Istio default gateway implementation
@@ -11,4 +11,4 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - local.niveussolutions.com
+    - backend.ns.com
